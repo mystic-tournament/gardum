@@ -64,10 +64,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ui/floating_text/floating_text.gd"
 }, {
-"base": "BaseAbility",
+"base": "Reference",
 "class": "FrostBolt",
 "language": "GDScript",
-"path": "res://characters/ada/abilities/frost_bolt.gd"
+"path": "res://characters/ada/abilities/frost_bolt/frost_bolt.gd"
 }, {
 "base": "Control",
 "class": "HUD",

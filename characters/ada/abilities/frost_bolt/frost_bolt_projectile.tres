@@ -1,0 +1,11 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://characters/ada/abilities/frost_bolt/frost_bolt_projectile_normal.png" type="Texture" id=1]
+[ext_resource path="res://characters/ada/abilities/frost_bolt/frost_bolt_projectile_roughness.png" type="Texture" id=2]
+
+[resource]
+albedo_color = Color( 0.733333, 0.85098, 0.905882, 1 )
+roughness_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 1 )
