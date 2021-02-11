@@ -1,4 +1,4 @@
-class_name FrostBolt
+class_name FrostBolt, "res://characters/ada/abilities/frost_bolt/frost_bolt.png"
 extends BaseAbility
 
 const FrostBoltScene: PackedScene = preload("res://characters/ada/abilities/frost_bolt/frost_bolt_projectile.tscn")

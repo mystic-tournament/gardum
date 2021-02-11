@@ -1,4 +1,4 @@
-class_name FrostPath
+class_name FrostPath, "res://characters/ada/abilities/frost_path/frost_path.png"
 extends BaseAbility
 
 

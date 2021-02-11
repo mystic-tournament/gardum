@@ -22,20 +22,23 @@ func set_action(action: String) -> void:
 		assert("Unknown event type")
 
 
+func set_ability(ability: BaseAbility) -> void:
+	if ability != null:
+		texture = load(Utils.get_script_icon(ability.script))
+
+
 func display_cooldown(time: float) -> void:
 	_cooldown_progress.max_value = time
 
 	# Animation
 	# warning-ignore:return_value_discarded
-	_tween.interpolate_property(_cooldown_progress, "value", 0, time, time)
+	_tween.interpolate_property(_cooldown_progress, "value", time, 0, time)
 	# warning-ignore:return_value_discarded
 	_tween.interpolate_method(_cooldown_label, "set_ceil", time, 0, time)
-	# warning-ignore:return_value_discarded
 
-	# Reset values at end
-	_tween.interpolate_callback(_cooldown_label, time, "set_text", String())
+	# Reset cooldown text at end
 	# warning-ignore:return_value_discarded
-	_tween.interpolate_callback(_cooldown_progress, time, "set_value", 0)
+	_tween.interpolate_callback(_cooldown_label, time, "set_text", String())
 
 	# warning-ignore:return_value_discarded
 	_tween.start()

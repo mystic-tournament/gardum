@@ -12,3 +12,10 @@ static func get_scene_property(state: SceneState, node_idx: int, property: Strin
 	for i in state.get_node_property_count(node_idx):
 		if state.get_node_property_name(node_idx, i) == property:
 			return state.get_node_property_value(node_idx, i)
+
+
+static func get_script_icon(script: Script) -> String:
+	for class_script in ProjectSettings.get_setting("_global_script_classes"):
+		if class_script.path == script.resource_path:
+			return ProjectSettings.get_setting("_global_script_class_icons")[class_script.class]
+	return String()

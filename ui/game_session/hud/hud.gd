@@ -14,6 +14,7 @@ func _ready() -> void:
 	for i in _abilities.get_child_count():
 		var ability_hud: AbilityHUD = _abilities.get_child(i)
 		ability_hud.set_action(PlayerController.ABILITY_ACTIONS[i])
+		ability_hud.set_ability(hero.get_ability(i))
 
 		var ability_cooldown: GameTimer = hero.get_ability_cooldown(i)
 		if ability_cooldown:
