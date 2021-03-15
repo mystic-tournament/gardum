@@ -23,6 +23,7 @@ puppetsync func start_game() -> void:
 		hero.set_name("Player" + str(player.get_network_master()))
 		map.add_child(hero)
 		player.get_controller().character = hero
+		hero.translation.y = 2
 	emit_signal("started")
 
 

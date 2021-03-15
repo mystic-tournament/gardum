@@ -1,0 +1,693 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://maps/sky_roof/sky_roof.gd" type="Script" id=1]
+[ext_resource path="res://materials/prototype/light_06.tres" type="Material" id=2]
+[ext_resource path="res://materials/prototype/orange_10.tres" type="Material" id=3]
+[ext_resource path="res://materials/prototype/light_02.tres" type="Material" id=4]
+[ext_resource path="res://materials/prototype/orange_08.tres" type="Material" id=5]
+[ext_resource path="res://materials/prototype/purple_10.tres" type="Material" id=6]
+[ext_resource path="res://materials/prototype/green_08.tres" type="Material" id=7]
+[ext_resource path="res://materials/prototype/green_09.tres" type="Material" id=8]
+[ext_resource path="res://materials/prototype/purple_08.tres" type="Material" id=9]
+[ext_resource path="res://materials/prototype/dark_03.tres" type="Material" id=10]
+[ext_resource path="res://materials/prototype/light_08.tres" type="Material" id=11]
+[ext_resource path="res://materials/prototype/dark_08.tres" type="Material" id=12]
+
+
+
+
+
+[node name="TestPlane" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="SunLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.466278, -0.884638, 4.50664e-08, -0.722307, -0.380717, 0.577345, -0.510741, -0.269204, -0.8165, 4.65705, 22.0137, 0 )
+light_energy = 2.0
+shadow_enabled = true
+shadow_color = Color( 0.6, 0.6, 0.6, 1 )
+
+[node name="MainCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="FlowerBed" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2505, -1, -10.8076 )
+
+[node name="Grass" type="CSGBox" parent="MainCombiner/FlowerBed"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 2.75, 0, -4 )
+width = 1.0
+height = 4.0
+material = ExtResource( 8 )
+
+[node name="Grass2" type="CSGBox" parent="MainCombiner/FlowerBed"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.25, 0, -4 )
+width = 1.0
+height = 4.0
+material = ExtResource( 8 )
+
+[node name="Platform" type="CSGBox" parent="MainCombiner/FlowerBed"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2 )
+width = 8.0
+depth = 11.0
+material = ExtResource( 6 )
+
+[node name="Stairs" type="CSGPolygon" parent="MainCombiner/FlowerBed"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3, 0, -1.5 )
+polygon = PoolVector2Array( -4, -1, 0, 1, 2, 1, 2, -1 )
+depth = 2.0
+material = ExtResource( 6 )
+
+[node name="Stairs2" type="CSGPolygon" parent="MainCombiner/FlowerBed"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 7, 0, -1.5 )
+polygon = PoolVector2Array( -4, -1, 0, 1, 2, 1, 2, -1 )
+depth = 2.0
+material = ExtResource( 6 )
+
+[node name="Glass" type="CSGBox" parent="MainCombiner/FlowerBed"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, 4 )
+width = 0.1
+height = 1.0
+depth = 7.0
+material = ExtResource( 2 )
+
+[node name="Glass3" type="CSGBox" parent="MainCombiner/FlowerBed"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 2.5 )
+width = 0.1
+height = 1.0
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="Glass2" type="CSGBox" parent="MainCombiner/FlowerBed"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1, 1.5, 7.5 )
+width = 0.1
+height = 1.0
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="Flowers" type="CSGCylinder" parent="MainCombiner/FlowerBed"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 1, 1, 3 )
+radius = 2.0
+height = 0.1
+sides = 20
+material = ExtResource( 7 )
+
+[node name="Platform" type="CSGCombiner" parent="MainCombiner"]
+
+[node name="Pedestal" type="CSGCombiner" parent="MainCombiner/Platform"]
+
+[node name="Back" type="CSGCylinder" parent="MainCombiner/Platform/Pedestal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, -0.447241, 0.336875, 0 )
+radius = 1.74034
+height = 0.676
+sides = 20
+material = ExtResource( 4 )
+
+[node name="Front" type="CSGCombiner" parent="MainCombiner/Platform/Pedestal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07271, 0.336875, 0 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform/Pedestal/Front"]
+radius = 3.5
+height = 0.676
+sides = 20
+material = ExtResource( 4 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform/Pedestal/Front"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92568, 0, 0 )
+operation = 2
+width = 4.68034
+depth = 8.37831
+
+[node name="Elevator" type="CSGCylinder" parent="MainCombiner/Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29455, -4.37872 )
+height = 4.5324
+sides = 20
+material = ExtResource( 5 )
+
+[node name="Elevator2" type="CSGCylinder" parent="MainCombiner/Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29455, 4.3814 )
+height = 4.37931
+sides = 20
+material = ExtResource( 5 )
+
+[node name="Platform1" type="CSGCombiner" parent="MainCombiner/Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07271, 0.336875, 0 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform/Platform1"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1, 8.23143, -0.813669, 0 )
+radius = 6.20235
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform/Platform1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+operation = 2
+width = 12.0
+height = 4.0
+depth = 14.0
+
+[node name="Platform2" type="CSGCombiner" parent="MainCombiner/Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80784, 0.336875, 0 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform/Platform2"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1, 10.9119, -2.71159, 0 )
+radius = 8.51023
+height = 4.77614
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6147, -2.21565, 0 )
+operation = 2
+width = 14.9125
+height = 9.03547
+depth = 19.7058
+
+[node name="House" type="CSGCombiner" parent="MainCombiner/Platform"]
+
+[node name="Walls" type="CSGBox" parent="MainCombiner/Platform/House"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.23, 0 )
+width = 5.87465
+height = 4.0
+depth = 7.72644
+material = ExtResource( 3 )
+
+[node name="IndoorWalls" type="CSGBox" parent="MainCombiner/Platform/House"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.7328, 0 )
+operation = 2
+width = 4.875
+height = 4.0
+depth = 6.726
+material = ExtResource( 3 )
+
+[node name="Door" type="CSGCylinder" parent="MainCombiner/Platform/House"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -2, 0, 1, -3.25841e-07, 8.91763, 1.28086, 3.40908 )
+operation = 2
+sides = 20
+material = ExtResource( 3 )
+
+[node name="Door2" type="CSGCylinder" parent="MainCombiner/Platform/House"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -2, 0, 1, -3.25841e-07, 8.91763, 1.28086, -3.40961 )
+operation = 2
+sides = 20
+material = ExtResource( 3 )
+
+[node name="FrontDoor" type="CSGCylinder" parent="MainCombiner/Platform/House"]
+transform = Transform( -1.62921e-07, 1, -3.25841e-07, 0, -1.62921e-07, -2, -1, -1.62921e-07, 5.30863e-14, 6.35252, 1.28086, -0.180185 )
+operation = 2
+sides = 20
+material = ExtResource( 3 )
+
+[node name="Window" type="CSGBox" parent="MainCombiner/Platform/House"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5099, 1.42912, 0 )
+operation = 2
+width = 0.974043
+height = 0.75
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="Windowsill" type="CSGCombiner" parent="MainCombiner/Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.80742, 0, 0 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform/Windowsill"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364637, 0.448497, -0.180185 )
+height = 0.847574
+sides = 25
+material = ExtResource( 5 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform/Windowsill"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.781523, 0.241073, 0 )
+operation = 2
+depth = 2.42725
+material = ExtResource( 5 )
+
+[node name="Visor" type="CSGCylinder" parent="MainCombiner/Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.4, 12.0936, -1.25494, 0 )
+radius = 1.3551
+sides = 25
+
+[node name="Bridge" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( 0.763432, -0.145766, -0.629224, 0.173622, 0.984658, -0.0174524, 0.622115, -0.0959233, 0.777027, 11, -1, 6 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Bridge"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97318, 0, 0.126577 )
+width = 8.96804
+depth = 4.2112
+material = ExtResource( 4 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Bridge"]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 1, 4.13083, 0.0110854, 3.43067 )
+operation = 2
+radius = 1.8985
+height = 2.22761
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Bridge"]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 1, 4.13083, 0.0110854, -3.22472 )
+operation = 2
+radius = 1.8985
+height = 2.22761
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Bridge2" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0, 1, 16, 0, -6 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Bridge2"]
+transform = Transform( 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, 0 )
+width = 10.0
+depth = 4.0
+material = ExtResource( 4 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Bridge2"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, 3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Bridge2"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, -3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Bridge5" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( -1.60446e-07, -2.82909e-08, 1.5, -0.173648, 0.984808, 0, -0.984808, -0.173648, -2.44381e-07, 42, 1.5, 9 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Bridge5"]
+transform = Transform( 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 7.10543e-15, 1.77636e-15, 1, 0, -2, 0 )
+width = 10.0
+depth = 4.0
+material = ExtResource( 4 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Bridge5"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, 3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Bridge5"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, -3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Bridge4" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.6, 36, 2, 20.5 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Bridge4"]
+transform = Transform( 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, 0 )
+width = 10.0
+depth = 4.0
+material = ExtResource( 4 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Bridge4"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, 3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Bridge4"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, -3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Bridge3" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( -1.53095e-07, -5.57222e-08, 1, -0.34202, 0.939693, 0, -0.939693, -0.34202, -1.62921e-07, 30, 1, 5 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Bridge3"]
+transform = Transform( 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, 0 )
+width = 10.0
+depth = 4.0
+material = ExtResource( 4 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Bridge3"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, 3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Bridge3"]
+transform = Transform( 3, 1.49012e-08, 0, 5.96046e-08, 1, 0, 0, 0, 1, 0.347297, -1.96962, -3.5 )
+operation = 2
+radius = 2.0
+height = 3.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Platform2" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, -1, -9 )
+
+[node name="Platform5" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+width = 30.0
+depth = 20.0
+material = ExtResource( 4 )
+
+[node name="Generator" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -1, 9 )
+width = 4.0
+height = 10.0
+depth = 4.0
+material = ExtResource( 3 )
+
+[node name="Generator2" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1, 9 )
+width = 4.0
+height = 10.0
+depth = 4.0
+material = ExtResource( 3 )
+
+[node name="WallWithGrass" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -1 )
+width = 1.0
+depth = 4.0
+material = ExtResource( 8 )
+
+[node name="WallWithGrass2" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -1 )
+width = 1.0
+depth = 4.0
+material = ExtResource( 8 )
+
+[node name="WallWithGrass3" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 6, 0, -9 )
+width = 1.0
+depth = 4.0
+material = ExtResource( 8 )
+
+[node name="WallWithGrass4" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -6, 0, -9 )
+width = 1.0
+depth = 4.0
+material = ExtResource( 8 )
+
+[node name="Sideboard" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -1, -6 )
+width = 1.0
+height = 1.0
+depth = 7.0
+material = ExtResource( 5 )
+
+[node name="Sideboard2" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1, -6 )
+width = 1.0
+height = 1.0
+depth = 7.0
+material = ExtResource( 5 )
+
+[node name="Sideboard3" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, -1, -9 )
+width = 1.0
+height = 1.0
+depth = 6.0
+material = ExtResource( 5 )
+
+[node name="Sideboard4" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1, 3 )
+width = 1.0
+height = 1.0
+depth = 5.0
+material = ExtResource( 5 )
+
+[node name="Sideboard5" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -9 )
+width = 1.0
+height = 1.0
+depth = 8.0
+material = ExtResource( 5 )
+
+[node name="Sideboard6" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, -1, -9 )
+width = 1.0
+height = 1.0
+depth = 6.0
+material = ExtResource( 5 )
+
+[node name="Sideboard7" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, -1, 9 )
+width = 1.0
+height = 1.0
+depth = 4.0
+material = ExtResource( 5 )
+
+[node name="Sideboard8" type="CSGBox" parent="MainCombiner/Platform2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, -1, 9 )
+width = 1.0
+height = 1.0
+depth = 4.0
+material = ExtResource( 5 )
+
+[node name="Statue" type="CSGCombiner" parent="MainCombiner/Platform2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform2/Statue"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0 )
+radius = 1.8
+height = 0.2
+sides = 25
+material = ExtResource( 12 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Platform2/Statue"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0 )
+radius = 1.65
+height = 0.2
+sides = 25
+material = ExtResource( 12 )
+
+[node name="Cylinder3" type="CSGCylinder" parent="MainCombiner/Platform2/Statue"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
+radius = 1.2
+height = 1.5
+sides = 25
+material = ExtResource( 12 )
+
+[node name="Sphere" type="CSGSphere" parent="MainCombiner/Platform2/Statue"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+radius = 1.6
+radial_segments = 25
+rings = 25
+material = ExtResource( 12 )
+
+[node name="Platform3" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 15 )
+
+[node name="Plain" type="CSGCombiner" parent="MainCombiner/Platform3"]
+
+[node name="Quadrant" type="CSGCombiner" parent="MainCombiner/Platform3/Plain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform3/Plain/Quadrant"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 0 )
+radius = 11.0
+height = 5.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform3/Plain/Quadrant"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -6 )
+operation = 2
+width = 26.0
+height = 6.0
+depth = 12.0
+material = ExtResource( 4 )
+
+[node name="Box2" type="CSGBox" parent="MainCombiner/Platform3/Plain/Quadrant"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1, 2 )
+operation = 2
+width = 10.0
+height = 6.0
+depth = 18.0
+material = ExtResource( 4 )
+
+[node name="Box3" type="CSGBox" parent="MainCombiner/Platform3/Plain/Quadrant"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 9 )
+operation = 2
+width = 8.0
+depth = 4.0
+material = ExtResource( 4 )
+
+[node name="Box4" type="CSGBox" parent="MainCombiner/Platform3/Plain/Quadrant"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1, 3 )
+operation = 2
+height = 6.0
+depth = 6.0
+material = ExtResource( 4 )
+
+[node name="InnerCylinder" type="CSGCylinder" parent="MainCombiner/Platform3/Plain/Quadrant"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0 )
+operation = 2
+radius = 10.0
+height = 2.0
+sides = 25
+material = ExtResource( 4 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform3/Plain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -4 )
+width = 18.0
+height = 5.0
+depth = 4.0
+material = ExtResource( 4 )
+
+[node name="Table" type="CSGCylinder" parent="MainCombiner/Platform3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45328, 6 )
+sides = 25
+material = ExtResource( 9 )
+
+[node name="Table2" type="CSGCylinder" parent="MainCombiner/Platform3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.45328, 3 )
+sides = 25
+material = ExtResource( 9 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, -3 )
+material = ExtResource( 10 )
+
+[node name="Shop" type="CSGCombiner" parent="MainCombiner/Platform3"]
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform3/Shop"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.5, 1 )
+width = 4.0
+height = 4.0
+depth = 6.0
+material = ExtResource( 3 )
+
+[node name="Billboard" type="CSGBox" parent="MainCombiner/Platform3/Shop"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, 1 )
+width = 0.1
+height = 1.0
+depth = 4.0
+material = ExtResource( 2 )
+
+[node name="Fontain" type="CSGCombiner" parent="MainCombiner/Platform3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -2 )
+
+[node name="Basement" type="CSGCombiner" parent="MainCombiner/Platform3/Fontain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 2 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform3/Fontain/Basement"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2 )
+radius = 3.0
+sides = 25
+material = ExtResource( 11 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Platform3/Fontain/Basement"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -2 )
+operation = 2
+radius = 2.8
+sides = 25
+material = ExtResource( 11 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform3/Fontain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+radius = 0.5
+height = 2.0
+sides = 25
+material = ExtResource( 11 )
+
+[node name="Platform4" type="CSGCombiner" parent="MainCombiner"]
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6342, -0.5, 18.9455 )
+width = 8.0
+height = 4.0
+depth = 10.0
+material = ExtResource( 4 )
+
+[node name="House" type="CSGCombiner" parent="MainCombiner/Platform4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 3, 20 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Platform4/House"]
+radius = 3.0
+height = 6.0
+sides = 25
+material = ExtResource( 3 )
+
+[node name="InnerCylinder" type="CSGCylinder" parent="MainCombiner/Platform4/House"]
+operation = 2
+radius = 2.7
+height = 5.7
+sides = 25
+material = ExtResource( 3 )
+
+[node name="Door" type="CSGCylinder" parent="MainCombiner/Platform4/House"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -2, 0, 1, -3.25841e-07, 0, 0, -3 )
+operation = 2
+sides = 20
+material = ExtResource( 3 )
+
+[node name="Door2" type="CSGCylinder" parent="MainCombiner/Platform4/House"]
+transform = Transform( -1.62921e-07, 1, -3.25841e-07, 0, -1.62921e-07, -2, -1, -1.62921e-07, 5.30863e-14, -3, 0, 0 )
+operation = 2
+sides = 20
+material = ExtResource( 3 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Platform4/House"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
+operation = 2
+width = 1.0
+height = 1.0
+material = ExtResource( 3 )
+
+[node name="Box2" type="CSGBox" parent="MainCombiner/Platform4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 2.5, 15 )
+material = ExtResource( 10 )
+
+[node name="Alcove" type="CSGCombiner" parent="MainCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 0 )
+
+[node name="Basement" type="CSGCombiner" parent="MainCombiner/Alcove"]
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Alcove/Basement"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0 )
+radius = 5.0
+height = 2.5
+sides = 25
+material = ExtResource( 6 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Alcove/Basement"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+operation = 2
+radius = 4.5
+sides = 25
+material = ExtResource( 6 )
+
+[node name="Box" type="CSGBox" parent="MainCombiner/Alcove/Basement"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+operation = 2
+width = 6.0
+depth = 10.0
+material = ExtResource( 6 )
+
+[node name="Cylinder" type="CSGCylinder" parent="MainCombiner/Alcove"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+height = 5.0
+sides = 25
+material = ExtResource( 6 )
+
+[node name="Cylinder2" type="CSGCylinder" parent="MainCombiner/Alcove"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0 )
+radius = 4.0
+sides = 25
+material = ExtResource( 6 )
+
+[node name="Cylinder3" type="CSGCylinder" parent="MainCombiner/Alcove"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+radius = 5.3
+height = 0.2
+sides = 25
+material = ExtResource( 6 )

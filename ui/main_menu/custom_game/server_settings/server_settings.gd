@@ -32,7 +32,7 @@ func _ready() -> void:
 	GameSession.connect("about_to_start", self, "_confirm_settings")
 
 	# TODO: Allow to select map
-	_map_edit.text = "res://maps/test_plane/test_plane.tscn"
+	_map_edit.text = "res://maps/sky_roof/sky_roof.tscn"
 	_on_map_changed(_map_edit.text)
 
 

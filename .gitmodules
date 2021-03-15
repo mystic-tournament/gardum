@@ -1,0 +1,4 @@
+[submodule "addons/kenney-prototype-textures"]
+	path = addons/kenney-prototype-textures
+	url = git@github.com:Calinou/kenney-prototype-textures.git
+	ignore = dirty
