@@ -18,6 +18,10 @@ var _map: PackedScene
 
 
 func _ready() -> void:
+	# TODO: Allow to select map
+	_map_edit.text = "res://maps/sky_roof/sky_roof.tscn"
+	_on_map_changed(_map_edit.text)
+
 	set_editable(false)
 	_on_teams_toggled(_teams_enabled.pressed)
 
@@ -26,20 +30,19 @@ func _ready() -> void:
 	_slots_count.rset_config("value", MultiplayerAPI.RPC_MODE_PUPPET)
 	_teams_count.rset_config("value", MultiplayerAPI.RPC_MODE_PUPPET)
 	# warning-ignore:return_value_discarded
-	get_tree().connect("network_peer_connected", self, "_send_settings_to_peer")
+	get_tree().connect("network_peer_connected", self, "_sync_with_connected_peer")
 
 	# warning-ignore:return_value_discarded
 	GameSession.connect("about_to_start", self, "_confirm_settings")
-
-	# TODO: Allow to select map
-	_map_edit.text = "res://maps/sky_roof/sky_roof.tscn"
-	_on_map_changed(_map_edit.text)
 
 
 func set_editable(editable: bool) -> void:
 	_teams_enabled.disabled = !editable
 	_slots_count.editable = editable
 	_teams_count.editable = editable
+	_mode_button.disabled = !editable
+	for i in range(_additional_settings_idx, _vbox.get_child_count()):
+		_vbox.get_child(i).set_editable(editable)
 
 
 func get_teams_count() -> int:
@@ -82,12 +85,14 @@ func _on_slots_count_changed(count: int) -> void:
 		_slots_count.rset("value", _slots_count.value)
 
 
-func _send_settings_to_peer(id: int) -> void:
+func _sync_with_connected_peer(id: int) -> void:
 	if !get_tree().is_network_server():
 		return
 	_teams_enabled.rset_id(id, "pressed", _teams_enabled.pressed)
 	_slots_count.rset_id(id, "value", _slots_count.value)
 	_teams_count.rset_id(id, "value", _teams_count.value)
+	for i in range(_additional_settings_idx, _vbox.get_child_count()):
+		_vbox.get_child(i).sync_with_connected_peer(id)
 
 
 func _on_gamemode_changed(idx: int) -> void:
