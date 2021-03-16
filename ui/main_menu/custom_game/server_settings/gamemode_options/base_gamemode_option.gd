@@ -2,6 +2,9 @@ class_name BaseGamemodeOption
 extends HBoxContainer
 
 
+var editable: bool setget set_editable
+
+
 func set_editable(_editable: bool) -> void:
 	pass
 

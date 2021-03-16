@@ -48,7 +48,7 @@ func back() -> void:
 		if get_tree().network_peer == null:
 			# Lobby was not created
 			_switch_to_servers()
-			_server_settings.set_editable(false)
+			_server_settings.editable = false
 		else:
 			_leave_dialog.popup_centered()
 		return
@@ -58,7 +58,7 @@ func back() -> void:
 
 func _create_lobby() -> void:
 	# TODO: Display all addresses here
-	_server_settings.set_editable(true)
+	_server_settings.editable = true
 	_addresses_edit.text = IP.get_local_addresses().front()
 	_port_spin.editable = true
 	_server_name_edit.editable = true
@@ -130,7 +130,7 @@ func _confirm_leave() -> void:
 	if get_tree().is_network_server():
 		_server_settings.disconnect("teams_count_changed", _lobby_tree, "set_teams_count")
 		_server_settings.disconnect("slots_count_changed", _lobby_tree, "set_slots_count")
-		_server_settings.set_editable(false)
+		_server_settings.editable = false
 
 	_lobby_tree.clear()
 	_cancel_connection()

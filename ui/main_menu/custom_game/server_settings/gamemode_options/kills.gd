@@ -8,8 +8,8 @@ func _ready() -> void:
 	_kills_count.rset_config("value", MultiplayerAPI.RPC_MODE_PUPPET)
 
 
-func set_editable(editable: bool) -> void:
-	_kills_count.editable = editable
+func set_editable(value: bool) -> void:
+	_kills_count.editable = value
 
 
 func sync_with_connected_peer(id: int) -> void:

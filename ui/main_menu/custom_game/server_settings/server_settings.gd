@@ -5,6 +5,8 @@ extends PanelContainer
 signal teams_count_changed(count)
 signal slots_count_changed(count)
 
+var editable: bool setget set_editable
+
 onready var _vbox = $VBox
 onready var _map_edit: LineEdit = $VBox/Map/LineEdit
 onready var _teams_enabled: CheckBox = $VBox/TeamsEnabled
@@ -22,7 +24,8 @@ func _ready() -> void:
 	_map_edit.text = "res://maps/sky_roof/sky_roof.tscn"
 	_on_map_changed(_map_edit.text)
 
-	set_editable(false)
+	# TODO 4.0: Remove extra self
+	self.editable = false
 	_on_teams_toggled(_teams_enabled.pressed)
 
 	# Allow to sync server configuration over network
@@ -36,13 +39,13 @@ func _ready() -> void:
 	GameSession.connect("about_to_start", self, "_confirm_settings")
 
 
-func set_editable(editable: bool) -> void:
-	_teams_enabled.disabled = !editable
-	_slots_count.editable = editable
-	_teams_count.editable = editable
-	_mode_button.disabled = !editable
+func set_editable(value: bool) -> void:
+	_teams_enabled.disabled = !value
+	_slots_count.editable = value
+	_teams_count.editable = value
+	_mode_button.disabled = !value
 	for i in range(_additional_settings_idx, _vbox.get_child_count()):
-		_vbox.get_child(i).set_editable(editable)
+		_vbox.get_child(i).editable = value
 
 
 func get_teams_count() -> int:
