@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://maps/sky_roof/sky_roof.gd" type="Script" id=1]
 [ext_resource path="res://materials/prototype/light_06.tres" type="Material" id=2]
@@ -12,10 +12,7 @@
 [ext_resource path="res://materials/prototype/dark_03.tres" type="Material" id=10]
 [ext_resource path="res://materials/prototype/light_08.tres" type="Material" id=11]
 [ext_resource path="res://materials/prototype/dark_08.tres" type="Material" id=12]
-
-
-
-
+[ext_resource path="res://maps/sky_roof/objects/bench/bench.tscn" type="PackedScene" id=13]
 
 [node name="TestPlane" type="Spatial"]
 script = ExtResource( 1 )
@@ -223,6 +220,9 @@ material = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.4, 12.0936, -1.25494, 0 )
 radius = 1.3551
 sides = 25
+
+[node name="Bench" parent="MainCombiner/Platform" instance=ExtResource( 13 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.7, 0.675, 0 )
 
 [node name="Bridge" type="CSGCombiner" parent="MainCombiner"]
 transform = Transform( 0.763432, -0.145766, -0.629224, 0.173622, 0.984658, -0.0174524, 0.622115, -0.0959233, 0.777027, 11, -1, 6 )
