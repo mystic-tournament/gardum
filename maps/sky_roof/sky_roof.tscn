@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://maps/sky_roof/sky_roof.gd" type="Script" id=1]
 [ext_resource path="res://materials/prototype/light_06.tres" type="Material" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://materials/prototype/light_08.tres" type="Material" id=11]
 [ext_resource path="res://materials/prototype/dark_08.tres" type="Material" id=12]
 [ext_resource path="res://maps/sky_roof/objects/bench/bench.tscn" type="PackedScene" id=13]
+[ext_resource path="res://maps/sky_roof/objects/street_light/street_light.tscn" type="PackedScene" id=14]
 
 [node name="TestPlane" type="Spatial"]
 script = ExtResource( 1 )
@@ -691,3 +692,6 @@ radius = 5.3
 height = 0.2
 sides = 25
 material = ExtResource( 6 )
+
+[node name="StreetLight" parent="." instance=ExtResource( 14 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -1.6, 0.675, 1.3 )
