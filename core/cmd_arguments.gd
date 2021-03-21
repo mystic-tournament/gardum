@@ -5,10 +5,14 @@ extends Node
 
 var server: bool
 var direct_connect: bool
+var single_game: bool
 
 
 func _init() -> void:
-	if "--server" in OS.get_cmdline_args():
+	var args: PoolStringArray = OS.get_cmdline_args()
+	if "--server" in args:
 		server = true
-	elif "--connect" in OS.get_cmdline_args():
+	elif "--connect" in args:
 		direct_connect = true
+	elif "--single-game" in args:
+		single_game = true

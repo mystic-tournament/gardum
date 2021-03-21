@@ -37,7 +37,7 @@ func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	_lobby_tree.connect("filled_changed", self, "_on_team_filled_changed", [], CONNECT_DEFERRED)
 
-	if CmdArguments.server:
+	if CmdArguments.server or CmdArguments.single_game:
 		_confirm_creation()
 	elif CmdArguments.direct_connect:
 		_direct_join_lobby()
@@ -124,6 +124,8 @@ func _confirm_creation() -> void:
 
 	if CmdArguments.server:
 		print("Waiting for players...")
+	elif CmdArguments.single_game:
+		call_deferred("_start_game") # Call deferred to allow other things to initialize
 
 
 func _confirm_leave() -> void:
