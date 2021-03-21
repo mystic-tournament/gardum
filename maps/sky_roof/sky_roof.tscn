@@ -8,13 +8,13 @@
 [ext_resource path="res://materials/prototype/purple_10.tres" type="Material" id=6]
 [ext_resource path="res://materials/prototype/green_08.tres" type="Material" id=7]
 [ext_resource path="res://materials/prototype/green_09.tres" type="Material" id=8]
-[ext_resource path="res://materials/prototype/purple_08.tres" type="Material" id=9]
 [ext_resource path="res://materials/prototype/dark_03.tres" type="Material" id=10]
 [ext_resource path="res://materials/prototype/light_08.tres" type="Material" id=11]
 [ext_resource path="res://materials/prototype/dark_08.tres" type="Material" id=12]
 [ext_resource path="res://maps/sky_roof/objects/bench/bench.tscn" type="PackedScene" id=13]
 [ext_resource path="res://maps/sky_roof/objects/street_light/street_light.tscn" type="PackedScene" id=14]
 [ext_resource path="res://maps/sky_roof/env.tres" type="Environment" id=15]
+[ext_resource path="res://maps/sky_roof/objects/cafe_table/cafe_table.tscn" type="PackedScene" id=16]
 
 [node name="TestPlane" type="Spatial"]
 script = ExtResource( 1 )
@@ -229,6 +229,9 @@ sides = 25
 
 [node name="Bench" parent="MainCombiner/Platform" instance=ExtResource( 13 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.7, 0.675, 0 )
+
+[node name="StreetLight" parent="MainCombiner/Platform" instance=ExtResource( 14 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -1.6, 0.675, 1.3 )
 
 [node name="Bridge" type="CSGCombiner" parent="MainCombiner"]
 transform = Transform( 0.763432, -0.145766, -0.629224, 0.173622, 0.984658, -0.0174524, 0.622115, -0.0959233, 0.777027, 11, -1, 6 )
@@ -549,16 +552,6 @@ height = 5.0
 depth = 4.0
 material = ExtResource( 4 )
 
-[node name="Table" type="CSGCylinder" parent="MainCombiner/Platform3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45328, 6 )
-sides = 25
-material = ExtResource( 9 )
-
-[node name="Table2" type="CSGCylinder" parent="MainCombiner/Platform3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.45328, 3 )
-sides = 25
-material = ExtResource( 9 )
-
 [node name="Box" type="CSGBox" parent="MainCombiner/Platform3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, -3 )
 material = ExtResource( 10 )
@@ -604,6 +597,12 @@ radius = 0.5
 height = 2.0
 sides = 25
 material = ExtResource( 11 )
+
+[node name="CafeTable" parent="MainCombiner/Platform3" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6 )
+
+[node name="CafeTable2" parent="MainCombiner/Platform3" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 3.6 )
 
 [node name="Platform4" type="CSGCombiner" parent="MainCombiner"]
 
@@ -697,6 +696,3 @@ radius = 5.3
 height = 0.2
 sides = 25
 material = ExtResource( 6 )
-
-[node name="StreetLight" parent="." instance=ExtResource( 14 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -1.6, 0.675, 1.3 )
