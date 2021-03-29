@@ -86,7 +86,7 @@ func get_ability(idx: int):
 func can_use_ability(idx: int) -> bool:
 	if _abilities[idx] == null:
 		return false
-	var cooldown: AbilityCooldown = _abilities[idx].get_cooldown()
+	var cooldown: ExtendedTimer = _abilities[idx].get_cooldown()
 	return not cooldown or cooldown.is_stopped()
 
 

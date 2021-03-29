@@ -1,4 +1,4 @@
-class_name AbilityCooldown
+class_name ExtendedTimer
 extends Timer
 # Expands the basic timer by adding additional signals to it.
 # Automatically have GameSession as a parent.

@@ -36,7 +36,7 @@ func set_ability(new_ability: BaseAbility) -> void:
 
 	texture = load(Utils.get_script_icon(ability.script))
 
-	var cooldown: AbilityCooldown = ability.get_cooldown()
+	var cooldown: ExtendedTimer = ability.get_cooldown()
 	if cooldown:
 		# warning-ignore:return_value_discarded
 		cooldown.connect("started", self, "_display_cooldown")

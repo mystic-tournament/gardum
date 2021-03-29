@@ -9,7 +9,7 @@ const HEIGHT_GAP: float = 0.02 # To avoid colliding on spawn
 
 
 func _init() -> void:
-	_cooldown = AbilityCooldown.new(4)
+	_cooldown = ExtendedTimer.new(4)
 
 
 func use(caster: BaseActor) -> void:

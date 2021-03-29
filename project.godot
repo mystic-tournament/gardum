@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Timer",
-"class": "AbilityCooldown",
-"language": "GDScript",
-"path": "res://characters/ability_cooldown.gd"
-}, {
 "base": "TextureRect",
 "class": "AbilityHUD",
 "language": "GDScript",
@@ -88,6 +83,11 @@ _global_script_classes=[ {
 "class": "ExitDialog",
 "language": "GDScript",
 "path": "res://ui/main_menu/exit_dialog.gd"
+}, {
+"base": "Timer",
+"class": "ExtendedTimer",
+"language": "GDScript",
+"path": "res://core/extended_timer.gd"
 }, {
 "base": "ColorRect",
 "class": "FadeRect",
@@ -215,7 +215,6 @@ _global_script_classes=[ {
 "path": "res://ui/game_session/hud/value_bar.gd"
 } ]
 _global_script_class_icons={
-"AbilityCooldown": "",
 "AbilityHUD": "",
 "Ada": "",
 "BaseAbility": "",
@@ -231,6 +230,7 @@ _global_script_class_icons={
 "DirectConnectDialog": "",
 "ErrorDialog": "",
 "ExitDialog": "",
+"ExtendedTimer": "",
 "FadeRect": "",
 "FloatingText": "",
 "FrostBolt": "res://characters/ada/abilities/frost_bolt/frost_bolt.png",
