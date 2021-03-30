@@ -6,6 +6,8 @@ signal died(by)
 signal health_modified(delta, by)
 signal ability_changed(idx, ability)
 signal health_changed(value)
+signal status_effect_added(effect)
+signal status_effect_removed(effect)
 
 enum Abilities {
 	BASE_ATTACK,
@@ -27,6 +29,7 @@ var _projectile_spawn_pos: Position3D
 var _mesh_instance: MeshInstance
 var _motion: Vector3
 var _abilities: Array
+var _status_effects: Array
 # TODO 4.0: Use BaseController type (cyclic dependency)
 var _controller
 
@@ -136,3 +139,26 @@ func get_mesh_instance() -> MeshInstance:
 # TODO 4.0: Use BaseController return type (cyclic dependency)
 func get_controller():
 	return _controller
+
+
+func apply_status_effect(script: GDScript, caster: BaseActor = null) -> void:
+	# Check if effect is already exists
+	for effect in _status_effects:
+		if effect.caster == caster and effect is script:
+			effect.get_timer().start() # Restart timer
+			return
+
+	# No such effect found, create a new one
+	var new_effect: StatusEffect = script.new(caster)
+	_status_effects.append(new_effect)
+	# warning-ignore:return_value_discarded
+	new_effect.get_timer().connect("timeout", self, "remove_status_effect", [new_effect])
+	new_effect.apply(self)
+	emit_signal("status_effect_added", new_effect)
+
+
+func remove_status_effect(effect: StatusEffect) -> void:
+	_status_effects.erase(effect)
+	effect.get_timer().disconnect("timeout", self, "remove_status_effect")
+	effect.clear(self)
+	emit_signal("status_effect_removed", effect)
