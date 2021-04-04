@@ -13,9 +13,9 @@ signal stopped
 signal started(time)
 
 
-func _init(time_sec: float) -> void:
+func _init(time_sec: float, one_shot: bool = true) -> void:
 	_timer.wait_time = time_sec
-	_timer.one_shot = true
+	_timer.one_shot = one_shot
 	GameSession.add_child(_timer)
 	# warning-ignore:return_value_discarded
 	_timer.connect("timeout", self, "emit_signal", ["timeout"])

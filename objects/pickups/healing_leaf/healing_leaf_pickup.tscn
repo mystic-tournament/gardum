@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objects/pickups/pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/pickups/healing_leaf/healing_leaf.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.25, 0.25, 0.25 )
+
+[node name="HealingLeafPickup" instance=ExtResource( 1 )]
+status_effect = ExtResource( 2 )
+
+[node name="Position3D" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Position3D" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12538, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+__meta__ = {
+"_editor_description_": ""
+}

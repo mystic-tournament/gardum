@@ -104,7 +104,7 @@ func get_rotation_time() -> float:
 
 
 # Change the health of the actor to a certain amount
-func modify_health(delta: int, by: Actor) -> void:
+func modify_health(delta: int, by: Actor = null) -> void:
 	if health <= 0:
 		return
 	delta = int(delta * incoming_damage_multiplier)
