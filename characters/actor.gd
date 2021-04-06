@@ -20,8 +20,8 @@ enum Abilities {
 const MOVE_SPEED = 10
 const JUMP_IMPULSE = 4
 
-sync var max_health: int = 20
-sync var health: int = max_health setget set_health
+var max_health: int = 20
+var health: int = max_health setget set_health
 var damage_multiplier: float = 1
 var incoming_damage_multiplier: float = 1
 
