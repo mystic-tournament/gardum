@@ -24,6 +24,7 @@ var max_health: int = 20
 var health: int = max_health setget set_health
 var damage_multiplier: float = 1
 var incoming_damage_multiplier: float = 1
+var speed_multiplier: float = 1
 
 var velocity: Vector3
 
@@ -46,10 +47,10 @@ func _init() -> void:
 
 
 func move(delta: float, direction: Vector3, jump: bool) -> void:
-	_motion = _motion.linear_interpolate(direction * MOVE_SPEED, Parameters.get_motion_interpolate_speed() * delta)
+	_motion = _motion.linear_interpolate(direction * MOVE_SPEED * speed_multiplier, Parameters.get_motion_interpolate_speed() * delta)
 
 	var new_velocity: Vector3
-	if is_on_floor() and velocity.length() < MOVE_SPEED:
+	if is_on_floor() and velocity.length() < MOVE_SPEED * speed_multiplier:
 		new_velocity = _motion
 		if jump:
 			new_velocity.y = JUMP_IMPULSE

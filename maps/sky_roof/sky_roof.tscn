@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://maps/sky_roof/sky_roof.gd" type="Script" id=1]
 [ext_resource path="res://materials/prototype/light_06.tres" type="Material" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://maps/sky_roof/objects/trash_can/trash_can.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/pickups/berserker_mask/berserker_mask_pickup.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/pickups/healing_leaf/healing_leaf_pickup.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/pickups/speed_boost/speed_boost_pickup.tscn" type="PackedScene" id=20]
 
 [node name="TestPlane" type="Spatial"]
 script = ExtResource( 1 )
@@ -143,9 +144,6 @@ radius = 6.20235
 sides = 25
 material = ExtResource( 4 )
 
-[node name="BerserkerMaskPickup" parent="MainCombiner/Platform/Platform1" instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.325, 0 )
-
 [node name="Box" type="CSGBox" parent="MainCombiner/Platform/Platform1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
 operation = 2
@@ -242,6 +240,15 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -1.4, 0
 
 [node name="TrashCan" parent="MainCombiner/Platform" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.675, -1.5 )
+
+[node name="SpeedBoostPickup" parent="MainCombiner/Platform" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.03, 1 )
+
+[node name="HealingLeafPickup" parent="MainCombiner/Platform" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.03, -1 )
+
+[node name="BerserkerMaskPickup" parent="MainCombiner/Platform" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.03, 0 )
 
 [node name="Bridge" type="CSGCombiner" parent="MainCombiner"]
 transform = Transform( 0.763432, -0.145766, -0.629224, 0.173622, 0.984658, -0.0174524, 0.622115, -0.0959233, 0.777027, 11, -1, 6 )
@@ -712,6 +719,3 @@ radius = 5.3
 height = 0.2
 sides = 25
 material = ExtResource( 6 )
-
-[node name="HealingLeafPickup" parent="." instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82312, 1.55857, 0 )
