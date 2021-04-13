@@ -102,6 +102,9 @@ func _on_hero_died(by: Controller, dead_owner: Controller) -> void:
 
 
 func _on_health_modified(delta: int, by: Controller) -> void:
+	if not by:
+		return
+
 	var player_by: Player = by.get_player()
 	if delta < 0:
 		player_by.get_statistic().damage -= delta

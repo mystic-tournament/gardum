@@ -49,7 +49,7 @@ func _emit_died_signal(by: Actor) -> void:
 
 
 func _emit_health_modified_signal(delta: int, by: Actor) -> void:
-	emit_signal("health_modified", delta, by.get_controller())
+	emit_signal("health_modified", delta, by.get_controller() if by else null)
 
 
 func _emit_ability_changed_signal(idx: int, ability: Ability) -> void:
