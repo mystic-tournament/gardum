@@ -9,10 +9,10 @@ size = Vector3( 0.25, 0.25, 0.25 )
 [node name="SpeedBoostPickup" instance=ExtResource( 1 )]
 status_effect = ExtResource( 2 )
 
-[node name="Position3D" parent="." index="0"]
+[node name="Position" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Position3D" index="0"]
+[node name="MeshInstance" type="MeshInstance" parent="Position" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12538, 0 )
 mesh = SubResource( 1 )
 material/0 = null
