@@ -17,9 +17,9 @@
 [ext_resource path="res://maps/sky_roof/env.tres" type="Environment" id=15]
 [ext_resource path="res://maps/sky_roof/objects/cafe_table/cafe_table.tscn" type="PackedScene" id=16]
 [ext_resource path="res://maps/sky_roof/objects/trash_can/trash_can.tscn" type="PackedScene" id=17]
-[ext_resource path="res://objects/pickups/berserker_mask/berserker_mask_pickup.tscn" type="PackedScene" id=18]
-[ext_resource path="res://objects/pickups/healing_leaf/healing_leaf_pickup.tscn" type="PackedScene" id=19]
-[ext_resource path="res://objects/pickups/speed_boost/speed_boost_pickup.tscn" type="PackedScene" id=20]
+[ext_resource path="res://objects/pickups/rage/rage.tscn" type="PackedScene" id=18]
+[ext_resource path="res://objects/pickups/healing/healing.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/pickups/speed_boost/speed_boost.tscn" type="PackedScene" id=20]
 
 [node name="TestPlane" type="Spatial"]
 script = ExtResource( 1 )
