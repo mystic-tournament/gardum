@@ -2,8 +2,9 @@
 
 [ext_resource path="res://maps/sky_roof/objects/street_light/street_light.glb" type="PackedScene" id=1]
 [ext_resource path="res://materials/dark_metal.tres" type="Material" id=2]
-[ext_resource path="res://maps/sky_roof/objects/street_light/gold_metal.tres" type="Material" id=3]
+[ext_resource path="res://materials/gold_metal.tres" type="Material" id=3]
 [ext_resource path="res://maps/sky_roof/objects/street_light/lamp.tres" type="Material" id=4]
+
 
 
 

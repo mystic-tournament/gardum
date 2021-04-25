@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://maps/sky_roof/sky_roof.gd" type="Script" id=1]
 [ext_resource path="res://materials/prototype/light_06.tres" type="Material" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://objects/pickups/rage/rage.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/pickups/healing/healing.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/pickups/speed_boost/speed_boost.tscn" type="PackedScene" id=20]
+[ext_resource path="res://maps/sky_roof/objects/cafe/cafe.tscn" type="PackedScene" id=21]
 
 [node name="TestPlane" type="Spatial"]
 script = ExtResource( 1 )
@@ -573,21 +574,8 @@ material = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, -3 )
 material = ExtResource( 10 )
 
-[node name="Shop" type="CSGCombiner" parent="MainCombiner/Platform3"]
-
-[node name="Box" type="CSGBox" parent="MainCombiner/Platform3/Shop"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.5, 1 )
-width = 4.0
-height = 4.0
-depth = 6.0
-material = ExtResource( 3 )
-
-[node name="Billboard" type="CSGBox" parent="MainCombiner/Platform3/Shop"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, 1 )
-width = 0.1
-height = 1.0
-depth = 4.0
-material = ExtResource( 2 )
+[node name="Cafe" parent="MainCombiner/Platform3" instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 6, 1.5, 1 )
 
 [node name="CafeTable" parent="MainCombiner/Platform3" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6 )
